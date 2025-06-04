@@ -1,4 +1,4 @@
-import ChartView from "./components/ChartView";
+import ChartView from "@/components/ChartView";
 
 export default function Index() {
   return (
