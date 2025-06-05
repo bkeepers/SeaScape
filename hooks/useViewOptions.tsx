@@ -1,41 +1,15 @@
-import styles from '@/styles';
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
+import { create } from 'zustand';
+import styles from '../styles';
 
-export type ViewOptions = {
+interface State {
   mapStyle?: string | object;
 }
 
-const ViewOptionsContext = createContext({
-  viewOptions: { mapStyle: styles[0] } as ViewOptions,
-  setViewOptions: (options: ViewOptions) => { },
-});
-
-export const ViewOptionsProvider = ({ children }: PropsWithChildren) => {
-  const [viewOptions, setViewOptions] = useState<ViewOptions>({ mapStyle: styles[0] });
-
-  return (
-    <ViewOptionsContext.Provider value={{ viewOptions, setViewOptions }}>
-      {children}
-    </ViewOptionsContext.Provider >
-  );
-};
-
-export function viewOptionsReducer(state: ViewOptions, action: { type: string; payload: any }): ViewOptions {
-  switch (action.type) {
-    case 'setMapStyle':
-      return {
-        ...state,
-        ...action.payload,
-      };
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
+interface Actions {
+  set: (options: Partial<State>) => void;
 }
 
-export function useViewOptions() {
-  const context = useContext(ViewOptionsContext);
-  if (!context) {
-    throw new Error('useViewOptions must be used within a ViewOptionsProvider');
-  }
-  return context;
-}
+export const useViewOptions = create<State & Actions>()((set) => ({
+  mapStyle: styles[0].style,
+  set: (options: Partial<State>) => set(options)
+}))

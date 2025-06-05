@@ -7,8 +7,8 @@ import CurrentLocationButton from "./CurrentLocationButton";
 import ViewOptionsButton from "./ViewOptionsButton";
 
 export default function ChartView() {
-  const { viewOptions } = useViewOptions();
-  const state = useMapState();
+  const viewOptions = useViewOptions();
+  const mapState = useMapState();
 
   return <MapView
     style={{ flex: 1 }}
@@ -19,9 +19,9 @@ export default function ChartView() {
     localizeLabels={true}
   >
     <Camera
-      followUserLocation={state.followUserLocation}
+      followUserLocation={mapState.followUserLocation}
       onUserTrackingModeChange={(e) => {
-        state.setFollowUserLocation(e.nativeEvent.payload.followUserLocation);
+        mapState.setFollowUserLocation(e.nativeEvent.payload.followUserLocation);
       }}
     />
 
