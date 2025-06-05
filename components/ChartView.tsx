@@ -1,5 +1,5 @@
 import { useViewOptions } from "@/hooks/useViewOptions";
-import { Camera, MapView } from "@maplibre/maplibre-react-native";
+import { Camera, MapView, UserLocation } from "@maplibre/maplibre-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ViewOptionsButton from "./ViewOptionsButton";
 
@@ -13,8 +13,10 @@ export default function ChartView() {
     localizeLabels={true}
   >
     <Camera
-      defaultSettings={{ centerCoordinate: [-77, 23], zoomLevel: 8 }}
+      followUserLocation
     />
+
+    <UserLocation />
 
     <SafeAreaView
       style={{ position: "absolute", bottom: 20, left: 20, zIndex: 1 }}
