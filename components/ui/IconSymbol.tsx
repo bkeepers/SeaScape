@@ -7,6 +7,8 @@ import { OpaqueColorValue, ViewStyle, type StyleProp, type TextStyle } from 'rea
 // See Symbols app for names: https://developer.apple.com/sf-symbols/
 const MAPPING: Partial<Record<ComponentProps<typeof MaterialIcons>['name'], SymbolViewProps['name']>> = {
   'layers': 'square.3.layers.3d',
+  'my-location': 'location.fill',
+  'location-searching': 'location',
 };
 
 export type IconSymbolProps = {
