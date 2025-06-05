@@ -2,11 +2,6 @@ import googleEarth from "@/styles/google-earth.json";
 
 export default [
   {
-    id: "default",
-    name: "Default",
-    style: "",
-  },
-  {
     id: "openmarinecharts-world",
     name: "OpenMarineCharts World",
     style:

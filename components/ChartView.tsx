@@ -1,7 +1,7 @@
 import { useViewOptions } from "@/hooks/useViewOptions";
 import { Camera, MapView } from "@maplibre/maplibre-react-native";
-import { Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
+import ViewOptionsButton from "./ViewOptionsButton";
 
 export default function ChartView() {
   const { viewOptions } = useViewOptions();
@@ -19,7 +19,7 @@ export default function ChartView() {
     <SafeAreaView
       style={{ position: "absolute", bottom: 20, left: 20, zIndex: 1 }}
     >
-      <Link href="/ViewOptions">View Settings</Link>
+      <ViewOptionsButton />
     </SafeAreaView>
   </MapView>;
 }
