@@ -11,7 +11,7 @@ const ViewOptionsContext = createContext({
 });
 
 export const ViewOptionsProvider = ({ children }: PropsWithChildren) => {
-  const [viewOptions, setViewOptions] = useState({});
+  const [viewOptions, setViewOptions] = useState<ViewOptions>({ mapStyle: styles[0] });
 
   return (
     <ViewOptionsContext.Provider value={{ viewOptions, setViewOptions }}>
