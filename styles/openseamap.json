@@ -1,0 +1,38 @@
+{
+  "layers": [
+    {
+      "id": "google-earth-hybrid",
+      "type": "raster",
+      "source": "google-earth-hybrid",
+      "paint": {
+        "raster-opacity": 1
+      }
+    },
+    {
+      "id": "openseamap",
+      "type": "raster",
+      "source": "openseamap"
+    }
+  ],
+  "sources": {
+    "openseamap": {
+      "type": "raster",
+      "tiles": [
+        "https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"
+      ],
+      "tileSize": 256,
+      "maxZoom": 22
+    },
+    "google-earth-hybrid": {
+      "type": "raster",
+      "tiles": [
+        "https://mt0.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+        "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+        "https://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+        "https://mt3.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
+      ],
+      "tileSize": 256,
+      "maxZoom": 20
+    }
+  }
+}
