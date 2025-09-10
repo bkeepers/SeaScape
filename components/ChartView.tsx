@@ -1,7 +1,6 @@
 import { useCameraState } from "@/hooks/useCameraState";
 import { useViewOptions } from "@/hooks/useViewOptions";
 import { Camera, MapView, UserLocation } from "@maplibre/maplibre-react-native";
-import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CurrentLocationButton from "./CurrentLocationButton";
 import ViewOptionsButton from "./ViewOptionsButton";
@@ -13,7 +12,7 @@ export default function ChartView() {
 
   return <>
     <MapView
-      style={StyleSheet.absoluteFill}
+      style={{ flex: 1 }}
       mapStyle={viewOptions.mapStyle}
       rotateEnabled={false}
       pitchEnabled={false}
@@ -24,6 +23,7 @@ export default function ChartView() {
       <Camera
         followUserLocation={cameraState.followUserLocation}
         zoomLevel={cameraState.zoomLevel}
+        bounds={cameraState.bounds}
         animationMode="easeTo"
         animationDuration={1000}
         heading={0}
