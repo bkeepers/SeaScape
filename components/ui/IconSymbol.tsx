@@ -9,6 +9,8 @@ const MAPPING: Partial<Record<ComponentProps<typeof MaterialIcons>['name'], Symb
   'layers': 'square.3.layers.3d',
   'my-location': 'location.fill',
   'location-searching': 'location',
+  'zoom-in': 'plus',
+  'zoom-out': 'minus',
 };
 
 export type IconSymbolProps = {
