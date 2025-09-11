@@ -1,5 +1,6 @@
 import { useCameraState } from "@/hooks/useCameraState";
 import { useViewOptions } from "@/hooks/useViewOptions";
+import mapStyles from "@/styles";
 import { Camera, MapView, UserLocation } from "@maplibre/maplibre-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CurrentLocationButton from "./CurrentLocationButton";
@@ -9,11 +10,12 @@ import ZoomAndScale from "./ZoomAndScale";
 export default function ChartView() {
   const viewOptions = useViewOptions();
   const cameraState = useCameraState();
+  const mapStyle = mapStyles.find(style => style.id === viewOptions.mapStyleId)?.style || mapStyles[0].style;
 
   return <>
     <MapView
       style={{ flex: 1 }}
-      mapStyle={viewOptions.mapStyle}
+      mapStyle={mapStyle}
       rotateEnabled={false}
       pitchEnabled={false}
       attributionEnabled={false}

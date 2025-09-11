@@ -4,7 +4,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import styles from '../styles';
 
 interface State {
-  mapStyle?: string | object;
+  mapStyleId?: (typeof styles[number])["id"];
 }
 
 interface Actions {
@@ -14,8 +14,10 @@ interface Actions {
 export const useViewOptions = create<State & Actions>()(
   persist(
     (set) => ({
-      mapStyle: styles[0].style,
-      set: (options: Partial<State>) => set(options)
+      mapStyleId: styles[0].id,
+      set(options: Partial<State>) {
+        set(options)
+      }
     }),
     {
       name: "view-options",
