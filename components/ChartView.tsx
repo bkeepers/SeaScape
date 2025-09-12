@@ -4,6 +4,7 @@ import mapStyles from "@/styles";
 import { Camera, MapView, UserLocation } from "@maplibre/maplibre-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CurrentLocationButton from "./CurrentLocationButton";
+import SpeedOverGround from "./SpeedOverGround";
 import ViewOptionsButton from "./ViewOptionsButton";
 import ZoomAndScale from "./ZoomAndScale";
 
@@ -34,7 +35,7 @@ export default function ChartView() {
           cameraState.set({ followUserLocation: e.nativeEvent.payload.followUserLocation });
         }}
       />
-      <UserLocation />
+      <UserLocation renderMode="native" />
     </MapView >
     <SafeAreaView style={{ position: "absolute", top: 0, right: 20, zIndex: 1 }}>
       <ZoomAndScale />
@@ -45,5 +46,8 @@ export default function ChartView() {
     <SafeAreaView style={{ position: "absolute", bottom: 0, right: 20, zIndex: 1 }}>
       <CurrentLocationButton />
     </SafeAreaView>
-  </>
+    <SafeAreaView style={{ position: "absolute", top: 0, left: 90, right: 90, zIndex: 1, alignItems: "center" }}>
+      <SpeedOverGround />
+    </SafeAreaView>
+  </>;
 }

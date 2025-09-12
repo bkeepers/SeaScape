@@ -1,20 +1,22 @@
-import useStyles from "@/hooks/useStyles";
+import { usePreferredUnits } from "@/hooks/usePreferredUnits";
 import { useViewOptions } from "@/hooks/useViewOptions";
 import mapStyles from "@/styles";
 import {
   Button,
   Host,
   List,
+  Picker,
+  Text,
   VStack
 } from '@expo/ui/swift-ui';
 
 export default function ViewOptions() {
-  const styles = useStyles();
   const viewOptions = useViewOptions();
+  const units = usePreferredUnits();
 
   return (
     <Host style={{ flex: 1 }}>
-      <VStack>
+      <VStack alignment="leading">
         <List>
           {
             mapStyles.map(({ id, name, style }) => {
@@ -34,6 +36,19 @@ export default function ViewOptions() {
               );
             })
           }
+        </List>
+
+        <Text>Preferred Units</Text>
+        <List>
+          <Picker
+            label="Speed"
+            options={units.possibilities('speed').map((unit) => units.describe(unit).plural)}
+            selectedIndex={units.possibilities('speed').indexOf(units.speed)}
+            onOptionSelected={({ nativeEvent: { index } }) => {
+              units.set({ speed: units.possibilities('speed')[index] });
+            }}
+            variant="menu"
+          />
         </List>
       </VStack>
     </Host>
